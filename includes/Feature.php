@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
-namespace SangPortfolio;
+namespace SangPortfolio\WpCoreWebVitalsOptimizer;
 if (! defined('ABSPATH')) { exit; }
-final class WpCoreWebVitalsOptimizerFeature {
+final class Feature {
     private const OPTION = 'wp_core_web_vitals_optimizer_enabled';
     private const SLUG = 'wp-core-web-vitals-optimizer';
     private const TITLE = 'WP Core Web Vitals Optimizer';
