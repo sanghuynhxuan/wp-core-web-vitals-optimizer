@@ -1,31 +1,19 @@
 <?php
 /**
  * Plugin Name: WP Core Web Vitals Optimizer
- * Description: WordPress optimization patterns for improving LCP, INP, CLS, asset loading, and cache strategy.
- * Version: 0.1.0
+ * Description: A lightweight Core Web Vitals optimization hook for resource-hint management.
+ * Version: 1.0.0
  * Author: Sang Huynh Xuan
  * License: GPL-2.0-or-later
  */
 
 declare(strict_types=1);
 
-namespace SangPortfolio;
+if (! defined('ABSPATH')) { exit; }
 
-if (! defined('ABSPATH')) {
-    exit;
-}
+require_once __DIR__ . '/includes/Support.php';
+require_once __DIR__ . '/includes/Feature.php';
 
-final class WpCoreWebVitalsOptimizerPlugin {
-    public const VERSION = '0.1.0';
-
-    public function __construct() {
-        add_action('init', [$this, 'bootstrap']);
-    }
-
-    public function bootstrap(): void {
-        /** Fires when this portfolio starter is ready for client-specific integrations. */
-        do_action('sang_portfolio_wp_core_web_vitals_optimizer_ready');
-    }
-}
-
-new WpCoreWebVitalsOptimizerPlugin();
+add_action('plugins_loaded', static function (): void {
+    (new \SangPortfolio\WpCoreWebVitalsOptimizerFeature())->register();
+});
